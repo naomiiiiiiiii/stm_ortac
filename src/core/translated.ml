@@ -68,6 +68,7 @@ type xpost = {
   translation : (cases, W.t list) result;
 }
 
+
 type value = {
   name : string;
   loc : Location.t;
@@ -78,7 +79,9 @@ type value = {
   pure : bool;
   checks : check list;
   preconditions : term list;
-  postconditions : term list;
+  postconditions : (term * bool) list;
+  (*the bools are only for the STM plugin, the other plugins can use any value
+  *)
   xpostconditions : xpost list;
 }
 
