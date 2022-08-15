@@ -135,7 +135,7 @@ let value (v : Translated.value) =
     @@ vars_invariants ~register_name "Pre" false v.arguments
     @@ report
     @@ pexp_let Nonrecursive [ value_binding ~pat:pret ~expr:try_call ]
-    @@ terms (List.map fst v.postconditions)
+    @@ terms (List.map (fun post -> post.post) v.postconditions)
     @@ checks true v.checks
     @@ vars_invariants ~register_name "Post" true v.arguments
     @@ vars_invariants ~register_name "Post" false v.returns
